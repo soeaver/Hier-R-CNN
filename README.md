@@ -19,12 +19,6 @@ In this repository, we release the COCO Human Parts dataset and Hier R-CNN code 
 Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/blob/master/INSTALL.md).
 
 
-## ImageNet pretrained weight
-
-- [R50](https://dl.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth?dl=1)
-- [X101-32x8d](https://dl.dropbox.com/s/ve1h1ol2ge7yfta/vovnet75_statedict_norm.pth.tar?dl=1)
-
-
 ## Results and Models
 |  Backbone  |  LR  | MS training | DCN | Det AP | Sub AP | DOWNLOAD |
 |------------|:----:|:-----------:|:---:|:------:|:------:| :-------:|
@@ -35,7 +29,7 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 ||
 |  R-101-FPN |  1x  | No          | No  | 37.2   | 33.8   |          |
 ||
-|  X-101-FPN |  1x  | No          | No  | 38.8   | 36.3   | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+|  X-101-FPN |  1x  | No          | No  | 38.8   | 36.3   |          |
 |  X-101-FPN |  2x  | Yes         | No  | 40.5   | 38.6   |          |
 |  X-101-FPN |  1x  | No          | No  | 40.3   | 37.1   |          |
 |  X-101-FPN |  2x  | Yes         | No  | 42.0   | 38.8   | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
