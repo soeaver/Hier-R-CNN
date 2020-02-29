@@ -34,13 +34,13 @@ ln -s cocoapi/PythonAPI/pycocotools/ ./
   ```
   ├─data
   │  ├─coco
-  │     ├─images
-  │     │  ├─train2017
-  │     │  ├─val2017
-  │     ├─annotations
-  │     │  ├─COCOHumanParts
-  │     │  │  ├─person_humanparts_train2017.json
-  │     │  │  ├─person_humanparts_val2017.json
+  │  │  ├─images
+  │  │  │  ├─train2017
+  │  │  │  ├─val2017
+  │  │  ├─annotations
+  │  │  │  ├─COCOHumanParts
+  │  │  │  │  ├─person_humanparts_train2017.json
+  │  │  │  │  ├─person_humanparts_val2017.json
   │
   ├─weights
      ├─resnet50_caffe.pth
