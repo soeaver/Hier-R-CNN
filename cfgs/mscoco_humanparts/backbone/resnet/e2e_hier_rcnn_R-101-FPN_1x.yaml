@@ -1,0 +1,46 @@
+# bbox_AP: 37.2/65.9/36.7/19.4/42.3/55.1/50.3;  hier_AP: 33.8/67.1/29.0/14.5/30.4/47.7
+# per categoty bbox_AP: 54.0/50.4/41.6/31.6/30.1/26.0/26.6
+PIXEL_MEANS: [102.9801, 115.9465, 122.7717]
+PIXEL_STDS: [1.0, 1.0, 1.0]
+CKPT: 'ckpts/mscoco_humanparts/backbone/resnet/e2e_hier_rcnn_R-101-FPN_1x'
+MODEL:
+  FPN_ON: True
+  FASTER_ON: True
+  HIER_ON: True
+  NUM_CLASSES: 2
+  CONV1_RGB2BGR: False  # caffe style
+BACKBONE:
+  CONV_BODY: "resnet"
+  RESNET:  # caffe style
+    LAYERS: (3, 4, 23, 3)
+RPN:
+  ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+  PRE_NMS_TOP_N_TRAIN: 2000
+  PRE_NMS_TOP_N_TEST: 1000
+  POST_NMS_TOP_N_TEST: 1000
+  FPN_POST_NMS_TOP_N_TEST: 1000
+FAST_RCNN:
+  ROI_XFORM_RESOLUTION: (7, 7)
+  ROI_XFORM_SAMPLING_RATIO: 2
+HRCNN:
+  ROI_XFORM_RESOLUTION: (32, 24)
+  ROI_XFORM_SAMPLING_RATIO: 2
+  ROI_SIZE_PER_IMG: 32
+  ROI_STRIDES: [4]
+  NUM_CLASSES: 6
+SOLVER:
+  WEIGHT_DECAY: 0.0001
+  BASE_LR: 0.02
+  GAMMA: 0.1
+  WARM_UP_ITERS: 500
+  MAX_ITER: 90000
+  STEPS: [60000, 80000]
+TRAIN:
+  WEIGHTS: weights/pytorch-model/caffe-model/resnet101_caffe.pth
+  DATASETS: ('humanparts_coco_2017_train', )
+  SCALES: (800,)
+  MAX_SIZE: 1333
+TEST:
+  DATASETS: ('humanparts_coco_2017_val',)
+  SCALE: 800
+  MAX_SIZE: 1333

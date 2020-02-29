@@ -1,0 +1,47 @@
+# bbox_AP: 40.5/70.2/40.4/22.6/46.3/57.6/52.7;  hier_AP: 39.2/72.7/36.2/17.0/35.7/54.2
+# per categoty bbox_AP: 56.7/53.2/44.6/35.5/34.6/29.1/29.4
+PIXEL_MEANS: [103.52, 116.28, 123.675]
+PIXEL_STDS: [57.375, 57.12, 58.395]
+CKPT: 'ckpts/mscoco_humanparts/backbone/resnext/e2e_hier_rcnn_X-101b-32x8d-FPN_2x_ms'
+MODEL:
+  FPN_ON: True
+  FASTER_ON: True
+  HIER_ON: True
+  NUM_CLASSES: 2
+BACKBONE:
+  CONV_BODY: "resnext"
+  RESNEXT:
+    LAYERS: (3, 4, 23, 3)
+    C: 32
+    WIDTH: 8
+RPN:
+  ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+  PRE_NMS_TOP_N_TRAIN: 2000
+  PRE_NMS_TOP_N_TEST: 1000
+  POST_NMS_TOP_N_TEST: 1000
+  FPN_POST_NMS_TOP_N_TEST: 1000
+FAST_RCNN:
+  ROI_XFORM_RESOLUTION: (7, 7)
+  ROI_XFORM_SAMPLING_RATIO: 2
+HRCNN:
+  ROI_XFORM_RESOLUTION: (32, 24)
+  ROI_XFORM_SAMPLING_RATIO: 2
+  ROI_SIZE_PER_IMG: 32
+  ROI_STRIDES: [4]
+  NUM_CLASSES: 6
+SOLVER:
+  WEIGHT_DECAY: 0.0001
+  BASE_LR: 0.02
+  GAMMA: 0.1
+  WARM_UP_ITERS: 500
+  MAX_ITER: 180000
+  STEPS: [120000, 160000]
+TRAIN:
+  WEIGHTS: ckpts/cls/imagenet/3rdparty/resnext/resnext101b_32x8d_vision/resnext101_32x8d-8ba56ff5.pth
+  DATASETS: ('humanparts_coco_2017_train', )
+  SCALES: (600, 640, 672, 704, 736, 768, 800, 864)
+  MAX_SIZE: 1400
+TEST:
+  DATASETS: ('humanparts_coco_2017_val',)
+  SCALE: 800
+  MAX_SIZE: 1333
