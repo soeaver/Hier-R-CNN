@@ -37,7 +37,7 @@ SOLVER:
   MAX_ITER: 180000
   STEPS: [120000, 160000]
 TRAIN:
-  WEIGHTS: weights/pytorch-model/caffe-model/resnet50_caffe.pth
+  WEIGHTS: weights/resnet50_caffe.pth
   DATASETS: ('humanparts_coco_2017_train', )
   SCALES: (600, 640, 672, 704, 736, 768, 800, 864)
   MAX_SIZE: 1400
