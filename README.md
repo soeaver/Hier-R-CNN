@@ -29,9 +29,10 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 ## Results and Models
 |  Backbone  |  LR  | MS training | DCN | Det AP (AP/APt/APs/APm/APl)  | Sub AP (AP/APs/APm/APl)  | DOWNLOAD |
 |------------|:----:|:-----------:|:---:|:----------------------------:|:------------------------:| :-------:|
-|  R-50-FPN  |  1x  | No          | No  | 36.8/19.9/41.9/53.9/47.5     | 33.5/14.4/29.9/47.1      | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
-|  R-50-FPN  |  2x  | Yes         | No  | 39.3/22.0/45.0/56.5/49.4     | 37.3/16.8/33.1/52.0      |          |
-
+|  R-50-FPN  |  1x  | No          | No  | **36.8**/19.9/41.9/53.9/47.5 | **33.5**/14.4/29.9/47.1  | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+|  R-50-FPN  |  2x  | Yes         | No  | **39.3**/22.0/45.0/56.5/49.4 | **37.3**/16.8/33.1/52.0  |          |
+|  R-50-FPN  |  1x  | No          | No  | **38.6**/21.2/43.7/55.9/51.7 | **36.0**/16.8/32.0/49.6  |          |
+|  R-50-FPN  |  2x  | Yes         | No  | **40.6**/23.0/46.4/57.5/51.5 | **37.3**/18.7/35.4/48.9  | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
 ## Training
 
 To train a model with 8 GPUs run:
