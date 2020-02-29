@@ -22,7 +22,6 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 ## ImageNet pretrained weight
 
 - [R50](https://dl.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth?dl=1)
-- [R101](https://dl.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth?dl=1)
 - [X101-32x8d](https://dl.dropbox.com/s/ve1h1ol2ge7yfta/vovnet75_statedict_norm.pth.tar?dl=1)
 
 
@@ -33,6 +32,8 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 |  R-50-FPN  |  2x  | Yes         | No  | **39.3**/22.0/45.0/56.5/49.4 | **37.3**/16.8/33.1/52.0  |          |
 |  R-50-FPN  |  1x  | No          | No  | **38.6**/21.2/43.7/55.9/51.7 | **36.0**/16.8/32.0/49.6  |          |
 |  R-50-FPN  |  2x  | Yes         | No  | **40.6**/23.0/46.4/57.5/51.5 | **37.3**/18.7/35.4/48.9  | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+||
+|  R-101-FPN |  1x  | No          | No  | **37.2**/19.4/42.3/55.1/50.3 | **33.8**/14.5/30.4/47.7  |          |
 ## Training
 
 To train a model with 8 GPUs run:
