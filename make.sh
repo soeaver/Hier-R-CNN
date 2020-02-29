@@ -6,7 +6,7 @@
 PYTHON=${PYTHON:-"python"}
 cd models/ops
 
-echo "Building ssd op..."
+echo "Building bbox op..."
 python setup_ssd.py build_ext --inplace
 rm -rf build
 
