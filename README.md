@@ -3,6 +3,13 @@ Hier R-CNN: Instance-level Human Parts Detection and A New Benchmark (under revi
 
 In this repository, we release the COCO Human Parts dataset and Hier R-CNN code in Pytorch.
 
+- Hier R-CNN output
+<p align="center"><img width="50%" src="data/pic1.jpg" /></p>
+
+- Hier R-CNN architecture
+<p align="center"><img width="50%" src="data/hier_rcnn.pdf" /></p>
+
+
 
 ## Installation
 - 8 x TITAN Xp GPU
@@ -14,10 +21,9 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 
 ## ImageNet pretrained weight
 
-- [VoVNet-39](https://dl.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth?dl=1)
-- [VoVNet-57](https://dl.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth?dl=1)
-- [VoVNet-75](https://dl.dropbox.com/s/ve1h1ol2ge7yfta/vovnet75_statedict_norm.pth.tar?dl=1)
-- [VoVNet-93](https://dl.dropbox.com/s/qtly316zv1isn0t/vovnet93_statedict_norm.pth.tar?dl=1)
+- [R50](https://dl.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth?dl=1)
+- [R101](https://dl.dropbox.com/s/b826phjle6kbamu/vovnet57_statedict_norm.pth?dl=1)
+- [X101-32x8d](https://dl.dropbox.com/s/ve1h1ol2ge7yfta/vovnet75_statedict_norm.pth.tar?dl=1)
 
 
 ## Results and Models
@@ -52,3 +58,4 @@ python tools/test_net.py --cfg ckpts/mscoco_humanparts/e2e_hier_rcnn_R-50-FPN_1x
 ```
 python tools/test_net.py --cfg ckpts/mscoco_humanparts/e2e_hier_rcnn_R-50-FPN_1x/e2e_hier_rcnn_R-50-FPN_1x.yaml --gpu_id 0
 ```
+
