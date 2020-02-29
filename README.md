@@ -4,10 +4,10 @@ Hier R-CNN: Instance-level Human Parts Detection and A New Benchmark (under revi
 In this repository, we release the COCO Human Parts dataset and Hier R-CNN code in Pytorch.
 
 - Hier R-CNN output
-<p align="center"><img width="50%" src="data/pic1.jpg" /></p>
+<p align="center"><img width="50%" src="data/output.png" /></p>
 
 - Hier R-CNN architecture
-<p align="center"><img width="50%" src="data/hier_rcnn.pdf" /></p>
+<p align="center"><img width="50%" src="data/hier_rcnn.png" /></p>
 
 
 
