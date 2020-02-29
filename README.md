@@ -30,7 +30,7 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 |  Backbone  |  LR  | MS training | DCN | Det AP (AP/APt/APs/APm/APl)  | Sub AP (AP/APs/APm/APl)  | DOWNLOAD |
 |------------|:----:|:-----------:|:---:|:----------------------------:|:------------------------:| :-------:|
 |  R-50-FPN  |  1x  | No          | No  | 36.8/19.9/41.9/53.9/47.5     | 33.5/14.4/29.9/47.1      | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
-
+|  R-50-FPN  |  2x  | Yes         | No  | 39.3/22.0/45.0/56.5/49.4     | 37.3/16.8/33.1/52.0      |          |
 
 ## Training
 
