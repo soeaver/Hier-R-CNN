@@ -37,7 +37,7 @@ SOLVER:
   MAX_ITER: 180000
   STEPS: [120000, 160000]
 TRAIN:
-  WEIGHTS: ckpts/cls/imagenet/3rdparty/resnext/resnext101b_32x8d_vision/resnext101_32x8d-8ba56ff5.pth
+  WEIGHTS: weights/resnext101_32x8d-8ba56ff5.pth
   DATASETS: ('humanparts_coco_2017_train', )
   SCALES: (600, 640, 672, 704, 736, 768, 800, 864)
   MAX_SIZE: 1400
