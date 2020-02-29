@@ -27,7 +27,7 @@ cd ../../
 ln -s cocoapi/PythonAPI/pycocotools/ ./
 ```
 
-## Data
+## Data and Pre-train weights
 
   Make sure to put the files as the following structure:
 
