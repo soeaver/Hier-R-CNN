@@ -14,7 +14,7 @@ sudo python setup.py install --cuda_ext --cpp_ext
 git clone https://github.com/soeaver/Hier-R-CNN.git
 
 # install other requirements
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # mask ops
 cd Hier-R-CNN
