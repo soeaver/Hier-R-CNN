@@ -4,6 +4,9 @@
 # install pytorch 1.1 and torchvision
 sudo pip3 install torch==1.1 torchvision
 
+# install other requirements
+pip install -r requirements.txt
+
 # install apex
 cd $INSTALL_DIR
 git clone https://github.com/NVIDIA/apex.git
@@ -23,4 +26,27 @@ mask
 cd ../../
 ln -s cocoapi/PythonAPI/pycocotools/ ./
 ```
+
+## Data
+
+  Make sure to put the files as the following structure:
+
+  ```
+  ├─data
+  │  ├─coco
+  │     ├─images
+  │     │  ├─train2017
+  │     │  ├─val2017
+  │     ├─annotations
+  │     │  ├─COCOHumanParts
+  │     │  │  ├─person_humanparts_train2017.json
+  │     │  │  ├─person_humanparts_val2017.json
+  │
+  ├─weights
+     ├─resnet50_caffe.pth
+     ├─resnet101_caffe.pth
+     ├─resnext101_32x8d-8ba56ff5.pth
+
+  ```
+  
 
