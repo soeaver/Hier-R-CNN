@@ -4,9 +4,6 @@
 # install pytorch 1.1 and torchvision
 sudo pip3 install torch==1.1 torchvision
 
-# install other requirements
-pip install -r requirements.txt
-
 # install apex
 cd $INSTALL_DIR
 git clone https://github.com/NVIDIA/apex.git
@@ -15,6 +12,9 @@ sudo python setup.py install --cuda_ext --cpp_ext
 
 # clone Hier-R-CNN
 git clone https://github.com/soeaver/Hier-R-CNN.git
+
+# install other requirements
+pip install -r requirements.txt
 
 # mask ops
 cd Hier-R-CNN
