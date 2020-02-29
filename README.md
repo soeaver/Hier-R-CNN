@@ -29,7 +29,7 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 ## Results and Models
 |  Backbone  |  LR  | MS training | DCN | Det AP (AP/APt/APs/APm/APl)  | Sub AP (AP/APs/APm/APl)  | DOWNLOAD |
 |------------|:----:|:-----------:|:---:|:----------------------------:|:------------------------:| :-------:|
-|  R-50-FPN  |  1x  | No          | No  | 36.8/19.9/41.9/53.9/47.5     | 33.5/14.4/29.9/47.1      | [link](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+|  R-50-FPN  |  1x  | No          | No  | 36.8/19.9/41.9/53.9/47.5     | 33.5/14.4/29.9/47.1      | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
 
 
 ## Training
