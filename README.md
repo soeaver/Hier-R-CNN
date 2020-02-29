@@ -27,16 +27,9 @@ Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/
 
 
 ## Results and Models
-| Backbone  | Multi-scale training | Inference time (ms) | Box AP (AP/APs/APm/APl)  | DOWNLOAD |
-|----------|:---------------:|:-------------------:|:------------------------:| :---:|
-| R-50-FPN-1x       | No           | 84                  | 37.5/21.3/40.3/49.5      | - |
- **V-39**-FPN-1x       | No           |**82**                 | 37.7/**22.4**/41.8/48.4      | [link](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
- ||
-| R-101-FPN-2x       | Yes           | 104                  | 41.3/25.0/45.5/53.0      | -                          
-| **V-57**-FPN-2x        |Yes           | **91**                  | 41.6/**25.9**/45.6/53.1      |  [link](https://dl.dropbox.com/s/f1posfwebb2ynnp/FCOS-V-57-MS-FPN-2x.pth?dl=1)|
-||
-| R-101-32x8d-FPN-2x        | Yes           |171                   | 42.5/26.0/46.1/54.2      | -  |
-| **V-93**-FPN-2x        | Yes           | **113**                  |   42.1/**26.2**/46.0/53.9    | [link](https://dl.dropbox.com/s/2v7go4lenvvjd1s/FCOS-V-93-MS-FPN-2x.pth?dl=1)|
+|   Backbone  | MS training | DCN | Det AP (AP/APt/APs/APm/APl)  | Sub AP (AP/APs/APm/APl)  | DOWNLOAD |
+|-------------|:-----------:|:---:|:----------------------------:|:------------------------:| :-------:|
+| R-50-FPN-1x | No          | No  | 36.8/19.9/41.9/53.9/47.5     | 33.5/14.4/29.9/47.1      | [link](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
 
 
 ## Training
