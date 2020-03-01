@@ -38,10 +38,10 @@ You can download the annotations of COCO Human Parts [here](https://drive.google
 |  X-101-FPN |  1x  | No          | Yes | 40.3   | 37.1   |          |
 |  X-101-FPN |  2x  | Yes         | Yes | 42.0   | 38.8   | [GoogleDrive](https://drive.google.com/open?id=1opxyPK3TU27W65r_OHxnsTvf8UJFV_hK)|
 
-**ImageNet pretrained weight**
+**ImageNet pretrained weights**
 
-- [R50](https://drive.google.com/open?id=1EtqFhrFTdBJNbp67effArVrTNx4q_ELr)
-- [X101-32x8d](https://drive.google.com/open?id=1c4OSVZIZtDT49B0DTC0tK3vcRgJpzR9n)
+- [R-50](https://drive.google.com/open?id=1EtqFhrFTdBJNbp67effArVrTNx4q_ELr)
+- [X-101-32x8d](https://drive.google.com/open?id=1c4OSVZIZtDT49B0DTC0tK3vcRgJpzR9n)
 
 
 ## Training
