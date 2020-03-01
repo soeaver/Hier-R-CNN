@@ -254,7 +254,7 @@ class HierRCNNLossComputation(object):
         for im_i in range(len(new_hier)):
             visible = visibles[im_i] > 0
             bboxes = new_hier[im_i][visible]
-            labels_per_im = torch.arange(1, num_classes, dtype=torch.long, device=device)[visible]
+            labels_per_im = torch.arange(1, num_classes + 1, dtype=torch.long, device=device)[visible]
             area = (bboxes[:, 2] - bboxes[:, 0] + 1) * (bboxes[:, 3] - bboxes[:, 1] + 1)
 
             l = xs[:, None] - bboxes[:, 0][None]
