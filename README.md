@@ -28,15 +28,15 @@ You can download the annotations of COCO Human Parts [here](https://drive.google
 |------------|:----:|:-----------:|:---:|:------:|:------:| :-------:|
 |  R-50-FPN  |  1x  | No          | No  | 36.8   | 33.5   | [GoogleDrive](https://drive.google.com/open?id=1-nOef31NrjMyZXkK8fJRmPi-aRQJm7dS)|
 |  R-50-FPN  |  2x  | Yes         | No  | 39.3   | 37.3   |          |
-|  R-50-FPN  |  1x  | No          | No  | 38.6   | 36.0   |          |
-|  R-50-FPN  |  2x  | Yes         | No  | 40.6   | 37.3   | [GoogleDrive](https://drive.google.com/open?id=1nrX26Uj7ymOpvPb0Q0AZEY97-43XJdLH)|
+|  R-50-FPN  |  1x  | No          | Yes | 38.6   | 36.0   |          |
+|  R-50-FPN  |  2x  | Yes         | Yes | 40.6   | 37.3   | [GoogleDrive](https://drive.google.com/open?id=1nrX26Uj7ymOpvPb0Q0AZEY97-43XJdLH)|
 ||
 |  R-101-FPN |  1x  | No          | No  | 37.2   | 33.8   |          |
 ||
 |  X-101-FPN |  1x  | No          | No  | 38.8   | 36.3   |          |
 |  X-101-FPN |  2x  | Yes         | No  | 40.5   | 38.6   |          |
-|  X-101-FPN |  1x  | No          | No  | 40.3   | 37.1   |          |
-|  X-101-FPN |  2x  | Yes         | No  | 42.0   | 38.8   | [GoogleDrive](https://drive.google.com/open?id=1opxyPK3TU27W65r_OHxnsTvf8UJFV_hK)|
+|  X-101-FPN |  1x  | No          | Yes | 40.3   | 37.1   |          |
+|  X-101-FPN |  2x  | Yes         | Yes | 42.0   | 38.8   | [GoogleDrive](https://drive.google.com/open?id=1opxyPK3TU27W65r_OHxnsTvf8UJFV_hK)|
 
 **ImageNet pretrained weight**
 
