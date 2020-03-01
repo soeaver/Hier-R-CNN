@@ -10,34 +10,38 @@ In this repository, we release the COCO Human Parts dataset and Hier R-CNN code 
 <p align="center"><img width="90%" src="data/hier_rcnn.png" /></p>
 
 
-
 ## Installation
 - 8 x TITAN Xp GPU
 - pytorch1.1
 - python3.6.8
 
-Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/blob/master/INSTALL.md).
+Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/blob/master/INSTALL.md#install).
+
+
+# Dataset
+
+You can download the annotations of COCO Human Parts [here](https://drive.google.com/open?id=1pT8aOTlVskaAtMadeAHzRrnxnEIxZbV8). And following [Data](https://github.com/soeaver/Hier-R-CNN/blob/master/INSTALL.md#data-and-pre-train-weights) to train or evaluate Hier R-CNN models.
 
 
 ## Results and Models
 |  Backbone  |  LR  | MS training | DCN | Det AP | Sub AP | DOWNLOAD |
 |------------|:----:|:-----------:|:---:|:------:|:------:| :-------:|
-|  R-50-FPN  |  1x  | No          | No  | 36.8   | 33.5   | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+|  R-50-FPN  |  1x  | No          | No  | 36.8   | 33.5   | [GoogleDrive](https://drive.google.com/open?id=1-nOef31NrjMyZXkK8fJRmPi-aRQJm7dS)|
 |  R-50-FPN  |  2x  | Yes         | No  | 39.3   | 37.3   |          |
 |  R-50-FPN  |  1x  | No          | No  | 38.6   | 36.0   |          |
-|  R-50-FPN  |  2x  | Yes         | No  | 40.6   | 37.3   | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+|  R-50-FPN  |  2x  | Yes         | No  | 40.6   | 37.3   | [GoogleDrive](https://drive.google.com/open?id=1nrX26Uj7ymOpvPb0Q0AZEY97-43XJdLH|
 ||
 |  R-101-FPN |  1x  | No          | No  | 37.2   | 33.8   |          |
 ||
 |  X-101-FPN |  1x  | No          | No  | 38.8   | 36.3   |          |
 |  X-101-FPN |  2x  | Yes         | No  | 40.5   | 38.6   |          |
 |  X-101-FPN |  1x  | No          | No  | 40.3   | 37.1   |          |
-|  X-101-FPN |  2x  | Yes         | No  | 42.0   | 38.8   | [GoogleDrive](https://dl.dropbox.com/s/8n0wyypfggliplw/FCOS-V-39-FPN-1x.pth?dl=1)|
+|  X-101-FPN |  2x  | Yes         | No  | 42.0   | 38.8   | [GoogleDrive](https://drive.google.com/open?id=1opxyPK3TU27W65r_OHxnsTvf8UJFV_hK)|
 
 **ImageNet pretrained weight**
 
-- [R50](https://dl.dropbox.com/s/s7f4vyfybyc9qpr/vovnet39_statedict_norm.pth?dl=1)
-- [X101-32x8d](https://dl.dropbox.com/s/ve1h1ol2ge7yfta/vovnet75_statedict_norm.pth.tar?dl=1)
+- [R50](https://drive.google.com/open?id=1EtqFhrFTdBJNbp67effArVrTNx4q_ELr)
+- [X101-32x8d](https://drive.google.com/open?id=1c4OSVZIZtDT49B0DTC0tK3vcRgJpzR9n)
 
 
 ## Training
