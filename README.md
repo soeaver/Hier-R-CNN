@@ -64,3 +64,6 @@ python tools/test_net.py --cfg ckpts/mscoco_humanparts/e2e_hier_rcnn_R-50-FPN_1x
 python tools/test_net.py --cfg ckpts/mscoco_humanparts/e2e_hier_rcnn_R-50-FPN_1x/e2e_hier_rcnn_R-50-FPN_1x.yaml --gpu_id 0
 ```
 
+
+## License
+Hier-R-CNN is released under the [MIT license](https://github.com/soeaver/Hier-R-CNN/blob/master/LICENSE).
