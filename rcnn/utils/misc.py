@@ -14,7 +14,7 @@ def reduce_sum(tensor):
         return tensor
     import torch.distributed as dist
     tensor = tensor.clone()
-    dist.all_reduce(tensor, op=dist.reduce_op.SUM)
+    dist.all_reduce(tensor, op=dist.ReduceOp.SUM)
     return tensor
 
 
