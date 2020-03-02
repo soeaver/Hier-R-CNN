@@ -187,12 +187,6 @@ def add_results(all_results, results):
         all_results[i].append(results[i])
 
 
-def add_uv_results(all_results, results):
-    for i in range(len(all_results)):
-        for j in range(4):
-            all_results[i][j].append(results[i][j])
-
-
 def get_blob(ims, target_scale, target_max_size, flip):
     ims_processed = []
     for im in ims:
