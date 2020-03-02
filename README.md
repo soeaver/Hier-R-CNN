@@ -18,7 +18,7 @@ In this repository, we release the COCO Human Parts dataset and Hier R-CNN code 
 Install Hier R-CNN following [INSTALL.md](https://github.com/soeaver/Hier-R-CNN/blob/master/INSTALL.md#install).
 
 
-# Dataset
+## Dataset
 
 You can download the annotations of COCO Human Parts [here](https://drive.google.com/open?id=1pT8aOTlVskaAtMadeAHzRrnxnEIxZbV8). And following [Data](https://github.com/soeaver/Hier-R-CNN/blob/master/INSTALL.md#data-and-pre-train-weights) to train or evaluate Hier R-CNN models.
 
