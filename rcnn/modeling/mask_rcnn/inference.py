@@ -18,7 +18,6 @@ class MaskPostProcessor(nn.Module):
     by taking the mask corresponding to the class with max
     probability (which are of fixed size and directly output
     by the CNN) and return the masks in the mask field of the BoxList.
-
     If a masker object is passed, it will additionally
     project the masks in the image according to the locations in boxes,
     """
@@ -32,7 +31,6 @@ class MaskPostProcessor(nn.Module):
             x (Tensor): the mask logits
             boxes (list[BoxList]): bounding boxes that are used as
                 reference, one for ech image
-
         Returns:
             results (list[BoxList]): one BoxList for each image, containing
                 the extra field mask
@@ -54,12 +52,9 @@ class MaskPostProcessor(nn.Module):
             bbox = BoxList(box.bbox, box.size, mode="xyxy")
             for field in box.fields():
                 bbox.add_field(field, box.get_field(field))
-            if cfg.MRCNN.MASKIOU_ON:
-                bbox.add_field("mask", prob)
-            else:
-                bbox_scores = bbox.get_field("scores")
-                bbox.add_field("mask", prob.cpu().numpy())
-                bbox.add_field("mask_scores", bbox_scores.cpu().numpy())
+            bbox_scores = bbox.get_field("scores")
+            bbox.add_field("mask", prob.cpu().numpy())
+            bbox.add_field("mask_scores", bbox_scores.cpu().numpy())
             results.append(bbox)
 
         return results
