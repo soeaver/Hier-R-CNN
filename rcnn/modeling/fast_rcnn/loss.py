@@ -164,8 +164,8 @@ class FastRCNNLossComputation(object):
             box_loss = smooth_l1_loss(
                 box_regression[sampled_pos_inds_subset[:, None], map_inds],
                 regression_targets[sampled_pos_inds_subset],
-                size_average=False,
                 beta=cfg.FAST_RCNN.SMOOTH_L1_BETA,
+                reduction="sum"
             )
             box_loss = box_loss / labels.numel()
             loss_dict["loss_box_reg"] = box_loss

@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
-
-from torch.autograd import Variable
 import torch.nn.functional as F
+from torch.autograd import Variable
 
 
 def lovasz_grad(gt_sorted):
@@ -13,9 +12,9 @@ def lovasz_grad(gt_sorted):
     p = len(gt_sorted)
     gts = gt_sorted.sum()
     intersection = gts - gt_sorted.float().cumsum(0)
-    union = gts + (1 - gt_sorted).float().cumsum(0)
+    union = gts + (~gt_sorted).float().cumsum(0)
     jaccard = 1. - intersection / union
-    if p > 1: # cover 1-pixel case
+    if p > 1:  # cover 1-pixel case
         jaccard[1:p] = jaccard[1:p] - jaccard[0:-1]
     return jaccard
 
@@ -61,7 +60,8 @@ class LovaszHinge(nn.Module):
             else:
                 input_flatten, target_flatten = self.flatten(inputs[id], targets[id])
             if act:
-                # map [0, 1] to [-inf, inf]
+                MIN = 1e-9
+                input_flatten = torch.clamp(input_flatten, min=MIN, max=1 - MIN)
                 input_flatten = torch.log(input_flatten) - torch.log(1 - input_flatten)
             losses.append(self.lovasz_hinge_flat(input_flatten, target_flatten))
         losses = torch.stack(losses).to(device=inputs.device)

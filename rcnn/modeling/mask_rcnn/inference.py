@@ -4,9 +4,9 @@ import pycocotools.mask as mask_util
 
 import torch
 from torch import nn
+import torch.nn.functional as F
 
 from utils.data.structures.bounding_box import BoxList
-from models.ops.misc import interpolate
 from rcnn.core.config import cfg
 
 

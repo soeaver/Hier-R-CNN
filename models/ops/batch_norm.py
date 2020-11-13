@@ -1,6 +1,6 @@
 import torch
 import torch.distributed as dist
-from torch import nn
+import torch.nn as nn
 from torch.autograd.function import Function
 
 from utils.misc import get_world_size
@@ -12,27 +12,43 @@ class FrozenBatchNorm2d(nn.Module):
     are fixed
     """
 
-    def __init__(self, n):
+    def __init__(self, num_channels, eps=1e-5):
         super(FrozenBatchNorm2d, self).__init__()
-        self.register_buffer("weight", torch.ones(n))
-        self.register_buffer("bias", torch.zeros(n))
-        self.register_buffer("running_mean", torch.zeros(n))
-        self.register_buffer("running_var", torch.ones(n))
+        self.num_channels = num_channels
+        self.eps = eps
+        self.register_buffer("weight", torch.ones(num_channels))
+        self.register_buffer("bias", torch.zeros(num_channels))
+        self.register_buffer("running_mean", torch.zeros(num_channels))
+        self.register_buffer("running_var", torch.ones(num_channels) - eps)
 
     def forward(self, x):
-        # Cast all fixed parameters to half() if necessary 
+        # Cast all fixed parameters to half() if necessary
         if x.dtype == torch.float16:
             self.weight = self.weight.half()
             self.bias = self.bias.half()
             self.running_mean = self.running_mean.half()
             self.running_var = self.running_var.half()
 
-        scale = self.weight * self.running_var.rsqrt()
-        bias = self.bias - self.running_mean * scale
-        scale = scale.reshape(1, -1, 1, 1)
-        bias = bias.reshape(1, -1, 1, 1)
-        return x * scale + bias
-    
+        if x.requires_grad:
+            scale = self.weight * (self.running_var + self.eps).rsqrt()
+            bias = self.bias - self.running_mean * scale
+            scale = scale.reshape(1, -1, 1, 1)
+            bias = bias.reshape(1, -1, 1, 1)
+            return x * scale + bias
+        else:
+            return nn.functional.batch_norm(
+                x,
+                self.running_mean,
+                self.running_var,
+                self.weight,
+                self.bias,
+                training=False,
+                eps=self.eps,
+            )
+
+    def __repr__(self):
+        return "FrozenBatchNorm2d(num_features={}, eps={})".format(self.num_channels, self.eps)
+
 
 class AllReduce(Function):
     @staticmethod
@@ -47,14 +63,14 @@ class AllReduce(Function):
     def backward(ctx, grad_output):
         dist.all_reduce(grad_output, async_op=False)
         return grad_output
-    
-    
+
+
 class NaiveSyncBatchNorm(nn.BatchNorm2d):
     """
     This function is taken from the detectron2 repo.
     It can be seen here:
     https://github.com/facebookresearch/detectron2/blob/master/detectron2/layers/batch_norm.py
-    
+
     `torch.nn.SyncBatchNorm` has known unknown bugs.
     It produces significantly worse AP (and sometimes goes NaN)
     when the batch size on each worker is quite different
@@ -85,4 +101,4 @@ class NaiveSyncBatchNorm(nn.BatchNorm2d):
         bias = self.bias - mean * scale
         scale = scale.reshape(1, -1, 1, 1)
         bias = bias.reshape(1, -1, 1, 1)
-        return input * scale + bias    
+        return input * scale + bias

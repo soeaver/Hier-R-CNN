@@ -7,5 +7,5 @@ class Scale(nn.Module):
         super(Scale, self).__init__()
         self.scale = nn.Parameter(torch.FloatTensor([init_value]))
 
-    def forward(self, input):
-        return input * self.scale
+    def forward(self, x):
+        return x * self.scale

@@ -3,36 +3,18 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class H_Sigmoid(nn.Module):
-    def forward(self, x):
-        out = F.relu6(x + 3, inplace=True) / 6
-        return out
-
-
-def make_norm(c, norm='bn', group=1, eps=1e-5):
-    if norm == 'bn':
-        return nn.BatchNorm2d(c, eps=eps)
-    elif norm == 'gn':
-        assert c % group == 0
-        return nn.GroupNorm(group, c, eps=eps)
-    elif norm == 'none':
-        return None
-    else:
-        return nn.BatchNorm2d(c, eps=eps)
-
-
 class AttentionWeights(nn.Module):
     expansion = 2
 
-    def __init__(self, num_channels, k, norm=None, groups=1, use_hsig=True):
+    def __init__(self, k, num_channels, norm=None, group=1, use_hsig=True):
         super(AttentionWeights, self).__init__()
         # num_channels *= 2
         self.k = k
         self.avgpool = nn.AdaptiveAvgPool2d(1)
         self.attention = nn.Sequential(
             nn.Conv2d(num_channels, k, 1, bias=False),
-            make_norm(k, norm, groups),
-            H_Sigmoid() if use_hsig else nn.Sigmoid()
+            nn.BatchNorm2d(k) if norm == 'BN' else nn.GroupNorm(group, k),
+            nn.Hardsigmoid() if use_hsig else nn.Sigmoid()
         )
 
     def forward(self, x):
@@ -46,14 +28,15 @@ class AttentionWeights(nn.Module):
 
 # TODO: keep it to use FP32 always, need to figure out how to set it using apex ?
 class MixtureBatchNorm2d(nn.BatchNorm2d):
-    def __init__(self, num_channels, k, eps=1e-5, momentum=0.1, track_running_stats=True):
+    def __init__(self, k, num_channels, eps=1e-5, momentum=0.1, track_running_stats=True):
         super(MixtureBatchNorm2d, self).__init__(
-            num_channels, eps=eps, momentum=momentum, affine=False, track_running_stats=track_running_stats)
+            num_channels, eps=eps, momentum=momentum, affine=False, track_running_stats=track_running_stats
+        )
         self.k = k
         self.weight_ = nn.Parameter(torch.Tensor(k, num_channels))
         self.bias_ = nn.Parameter(torch.Tensor(k, num_channels))
 
-        self.attention_weights = AttentionWeights(num_channels, k, norm='bn')
+        self.attention_weights = AttentionWeights(k, num_channels, norm='BN')
 
         self._init_params()
 
@@ -79,11 +62,11 @@ class MixtureBatchNorm2d(nn.BatchNorm2d):
 class MixtureGroupNorm(nn.Module):
     __constants__ = ['num_groups', 'num_channels', 'k', 'eps', 'weight', 'bias']
 
-    def __init__(self, num_channels, num_groups, k, eps=1e-5):
+    def __init__(self, k, num_groups, num_channels, eps=1e-5):
         super(MixtureGroupNorm, self).__init__()
+        self.k = k
         self.num_groups = num_groups
         self.num_channels = num_channels
-        self.k = k
         self.eps = eps
         self.affine = True
         self.weight_ = nn.Parameter(torch.Tensor(k, num_channels))
@@ -91,11 +74,11 @@ class MixtureGroupNorm(nn.Module):
         self.register_parameter('weight', None)
         self.register_parameter('bias', None)
 
-        self.attention_weights = AttentionWeights(num_channels, k, norm='gn', groups=1)
+        self.attention_weights = AttentionWeights(k, num_channels, norm='GN', group=1)
 
-        self.reset_parameters()
+        self._init_params()
 
-    def reset_parameters(self):
+    def _init_params(self):
         nn.init.normal_(self.weight_, 1, 0.1)
         nn.init.normal_(self.bias_, 0, 0.1)
 
@@ -114,5 +97,4 @@ class MixtureGroupNorm(nn.Module):
         return weight * output + bias
 
     def extra_repr(self):
-        return '{num_groups}, {num_channels}, eps={eps}, ' \
-               'affine={affine}'.format(**self.__dict__)
+        return '{num_groups}, {num_channels}, eps={eps}, ' 'affine={affine}'.format(**self.__dict__)

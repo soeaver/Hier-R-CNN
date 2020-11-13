@@ -1,7 +1,8 @@
 import torch
 from torch import nn
+from torch.nn import functional as F
 
-from models.ops import interpolate, NonLocal2d
+from models.ops import NonLocal2d
 from rcnn.core.config import cfg
 from rcnn.modeling import registry
 from rcnn.utils.poolers import Pooler
@@ -89,8 +90,8 @@ class roi_gce_head(nn.Module):
         if self.conv_before_asppv3 is not None:
             x = self.conv_before_asppv3(x)
 
-        asppv3_out = [interpolate(self.im_pool(x), scale_factor=resolution, 
-                                  mode="bilinear", align_corners=False)]
+        asppv3_out = [F.interpolate(self.im_pool(x), scale_factor=resolution,
+                                    mode="bilinear", align_corners=False)]
         for i in range(len(self.asppv3)):
             asppv3_out.append(self.asppv3[i](x))
         asppv3_out = torch.cat(asppv3_out, 1)

@@ -5,7 +5,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from utils.net import make_conv
-from models.ops import Conv2d, ConvTranspose2d, interpolate, Scale
+from models.ops import Scale
 from rcnn.modeling import registry
 from rcnn.core.config import cfg
 
@@ -45,15 +45,15 @@ class Hier_output(nn.Module):
 
         self.add_module('cls_tower', nn.Sequential(*cls_tower))
         self.add_module('bbox_tower', nn.Sequential(*bbox_tower))
-        self.cls_deconv = ConvTranspose2d(conv_dim, conv_dim, 2, 2, 0)
-        self.bbox_deconv = ConvTranspose2d(conv_dim, conv_dim, 2, 2, 0)
-        self.cls_logits = Conv2d(
+        self.cls_deconv = nn.ConvTranspose2d(conv_dim, conv_dim, 2, 2, 0)
+        self.bbox_deconv = nn.ConvTranspose2d(conv_dim, conv_dim, 2, 2, 0)
+        self.cls_logits = nn.Conv2d(
             conv_dim, num_classes, kernel_size=3, stride=1, padding=1
         )
-        self.bbox_pred = Conv2d(
+        self.bbox_pred = nn.Conv2d(
             conv_dim, 4, kernel_size=3, stride=1, padding=1
         )
-        self.centerness = Conv2d(
+        self.centerness = nn.Conv2d(
             conv_dim, 1, kernel_size=3, stride=1, padding=1
         )
 

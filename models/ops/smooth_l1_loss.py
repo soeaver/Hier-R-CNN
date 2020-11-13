@@ -1,7 +1,7 @@
 import torch
 
 
-def smooth_l1_loss(input, target, beta=1. / 9, size_average=True):
+def smooth_l1_loss(x, target, beta=1. / 9, reduction="none"):
     """
     very similar to the smooth_l1_loss from pytorch, but with
     the extra beta parameter
@@ -15,15 +15,17 @@ def smooth_l1_loss(input, target, beta=1. / 9, size_average=True):
         # (the False branch "0.5 * n ** 2 / 0" has an incoming gradient of
         # zeros, rather than "no gradient"). To avoid this issue, we define
         # small values of beta to be exactly l1 loss.
-        loss = torch.abs(input - target)
+        loss = torch.abs(x - target)
     else:
-        n = torch.abs(input - target)
+        n = torch.abs(x - target)
         cond = n < beta
         loss = torch.where(cond, 0.5 * n ** 2 / beta, n - 0.5 * beta)
 
-    if size_average:
-        return loss.mean()
-    return loss.sum()
+    if reduction == "mean":
+        loss = loss.mean()
+    elif reduction == "sum":
+        loss = loss.sum()
+    return loss
 
 
 def smooth_l1_loss_LW(bbox_pred, bbox_targets, bbox_inside_weights, bbox_outside_weights, beta=1.0):
