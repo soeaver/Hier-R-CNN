@@ -200,7 +200,7 @@ def filter_results(boxlist):
         boxlist.add_field("labels", torch.from_numpy(labels).to(dtype=torch.int64, device=device))
         fg_labels = torch.from_numpy(
             (np.arange(boxlist.bbox.shape[0]) % num_classes != 0).astype(int)
-        ).to(dtype=torch.uint8, device=device)
+        ).to(dtype=torch.bool, device=device)
         _scores = scores > cfg.FAST_RCNN.SCORE_THRESH
         inds_all = _scores & fg_labels
         result = boxlist_ml_nms(boxlist[inds_all], cfg.FAST_RCNN.NMS)

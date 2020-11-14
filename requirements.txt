@@ -1,0 +1,14 @@
+numpy==1.17.5
+matplotlib>=3.0.0
+opencv-python>=3.4.0
+setuptools
+Cython
+scipy>=1.2.0
+six
+h5py
+ninja
+yacs
+tqdm
+scikit-image
+Pillow>=6.0.0
+tabulate
